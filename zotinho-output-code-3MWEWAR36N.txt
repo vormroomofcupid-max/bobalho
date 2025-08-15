@@ -1,0 +1,20 @@
+# Caribe Travel
+
+Bem-vindo ao Caribe Travel! Este é um site para promover pacotes de viagem para Cuba.
+
+## Funcionalidades
+
+- Pacotes de viagem para Havana e Varadero
+- Informações sobre atrações turísticas
+- Formulário de contato para consultas
+
+## Como Usar
+
+1. Clone o repositório.
+2. Abra o arquivo `index.html` em um navegador.
+
+## Tecnologias Usadas
+
+- HTML
+- CSS
+- JavaScript

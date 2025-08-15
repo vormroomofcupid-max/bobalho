@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caribe Travel - Viagem para Cuba</title>
+    <style>
+        :root {
+            --primary: #e63946;
+            --secondary: #f1faee;
+            --accent: #a8dadc;
+            --dark: #1d3557;
+            --light: #f8f9fa;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: var(--dark);
+            color: white;
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 2rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+        
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(29, 53, 87, 0.7), rgba(29, 53, 87, 0.7)), url('https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/c94c5f60-f3a2-4963-812e-daf6b2d3070e.png') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 0 1rem;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .btn:hover {
+            background: #c1121f;
+            transform: translateY(-3px);
+        }
+        
+        section {
+            padding: 5rem 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+            color: var(--dark);
+        }
+        
+        .package {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+        
+        .package-img {
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .package-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .package:hover .package-img img {
+            transform: scale(1.1);
+        }
+        
+        .package-content {
+            padding: 2rem;
+        }
+        
+        .package-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+        
+        .package-price {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .package-details {
+            margin-bottom: 1.5rem;
+        }
+        
+        .package-details li {
+            margin-bottom: 0.5rem;
+            list-style-type: none;
+        }
+        
+        .package-details li:before {
+            content: "✓";
+            color: var(--primary);
+            margin-right: 0.5rem;
+        }
+        
+        .attractions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .attraction {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .attraction-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .attraction-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .attraction-content {
+            padding: 1.5rem;
+        }
+        
+        .attraction-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+        
+        .testimonials {
+            background-color: var(--secondary);
+            padding: 5rem 1rem;
+        }
+        
+        .testimonial-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .testimonial {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+        
+        .testimonial-author {
+            font-weight: bold;
+            color: var(--dark);
+        }
+        
+        .contact {
+            background-color: var(--dark);
+            color: white;
+        }
+        
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .contact-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group.full {
+            grid-column: 1 / -1;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        input, textarea, select {
+            width: 100%;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 5px;
+            background-color: var(--secondary);
+        }
+        
+        textarea {
+            height: 150px;
+        }
+        
+        footer {
+            background-color: #111;
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+        
+        .social-links {
+            margin: 1rem 0;
+        }
+        
+        .social-links a {
+            color: white;
+            margin: 0 0.5rem;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--accent);
+        }
+        
+        .copyright {
+            margin-top: 1rem;
+            color: #aaa;
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+            }
+            
+            nav ul li {
+                margin: 0 0.5rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .contact-form {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">Caribe Travel</div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#packages">Pacotes</a></li>
+                    <li><a href="#attractions">Atrações</a></li>
+                    <li><a href="#testimonials">Depoimentos</a></li>
+                    <li><a href="#contact">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Descubra a Magia de Cuba</h1>
+            <p>Viva a autêntica experiência cubana com nossos pacotes exclusivos. Havana, praias paradisíacas e a rica cultura local esperam por você!</p>
+            <a href="#packages" class="btn">Ver Pacotes</a>
+        </div>
+    </section>
+
+    <section id="packages">
+        <h2 class="section-title">Nossos Pacotes para Cuba</h2>
+        
+        <div class="package">
+            <div class="package-img">
+                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/e4b9df14-4a4c-4664-8f32-2283cd4d6f51.png" alt="Fachadas coloridas de edifícios em Havana Velha com pessoas caminhando na rua e carros antigos" />
+            </div>
+            <div class="package-content">
+                <h3 class="package-title">Havana Clássica</h3>
+                <div class="package-price">R$ 4.599,00</div>
+                <ul class="package-details">
+                    <li>7 noites em hotel 4 estrelas no centro de Havana</li>
+                    <li>Café da manhã incluído</li>
+                    <li>City tour por Havana Velha e Vieja</li>
+                    <li>Excursão para Varadero</li>
+                    <li>Show de salsa com jantar incluído</li>
+                    <li>Transfer aeroporto - hotel - aeroporto</li>
+                </ul>
+                <a href="#contact" class="btn">Reservar Agora</a>
+            </div>
+        </div>
+        
+        <div class="package">
+            <div class="package-img">
+                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/3a572201-839b-400a-915b-7d4d0763a2d8.png" alt="Praia de areia branca e água cristalina em Varadero com coqueiros e espreguiçadeiras" />
+            </div>
+            <div class="package-content">
+                <h3 class="package-title">Praia + Havana</h3>
+                <div class="package-price">R$ 5.299,00</div>
+                <ul class="package-details">
+                    <li>4 noites em Havana + 3 noites em Varadero</li>
+                    <li>Todos os cafés da manhã incluídos</li>
+                    <li>Resorts all-inclusive em Varadero</li>
+                    <li>Tour pela Havana colonial</li>
+                    <li>Passeio de catamarã com almoço</li>
+                    <li>Assistência de viagem 24h</li>
+                </ul>
+                <a href="#contact" class="btn">Reservar Agora</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="attractions">
+        <h2 class="section-title">Principais Atrações</h2>
+        
+        <div class="attractions">
+            <div class="attraction">
+                <div class="attraction-img">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/36dcc857-62e1-46c9-a5f8-4155cb78d7cc.png" alt="Praça central de Havana com arquitetura colonial espanhola, edifícios coloridos e estátua no centro" />
+                </div>
+                <div class="attraction-content">
+                    <h3 class="attraction-title">Havana Velha</h3>
+                    <p>Descubra o coração histórico de Cuba, com suas ruas de paralelepípedos e arquitetura colonial espanhola.</p>
+                </div>
+            </div>
+            
+            <div class="attraction">
+                <div class="attraction-img">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/4fa6a55d-7cd8-4aa9-9787-0899102caec5.png" alt="Carros americanos clássicos dos anos 50 em cores vibrantes estacionados na frente de edifícios coloniais" />
+                </div>
+                <div class="attraction-content">
+                    <h3 class="attraction-title">Carros Antigos</h3>
+                    <p>Viaje no tempo em um passeio pelos icônicos carros americanos dos anos 50 que enchem as ruas de Havana.</p>
+                </div>
+            </div>
+            
+            <div class="attraction">
+                <div class="attraction-img">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/fd78d984-10ee-465a-9a64-9a95242b806f.png" alt="Parque natural com cachoeira tropical cercada por vegetação exuberante e rochas" />
+                </div>
+                <div class="attraction-content">
+                    <h3 class="attraction-title">El Nicho</h3>
+                    <p>Um paraíso natural com piscinas naturais e cachoeiras escondidas nas montanhas de Escambray.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials" id="testimonials">
+        <div class="testimonial-container">
+            <h2 class="section-title">O Que Nossos Clientes Dizem</h2>
+            
+            <div class="testimonial-grid">
+                <div class="testimonial">
+                    <p class="testimonial-text">"A viagem para Cuba foi incrível! A Caribe Travel cuidou de tudo perfeitamente, desde os transfers até os passeios. Havana é uma cidade que respira cultura e história."</p>
+                    <p class="testimonial-author">- Ana Laura, São Paulo</p>
+                </div>
+                
+                <div class="testimonial">
+                    <p class="testimonial-text">"Varadero tem as praias mais lindas que já vi e o resort selecionado pela agência era impecável. Já estou planejando minha próxima viagem com eles!"</p>
+                    <p class="testimonial-author">- Roberto, Rio de Janeiro</p>
+                </div>
+                
+                <div class="testimonial">
+                    <p class="testimonial-text">"A experiência cubana superou minhas expectativas. O city tour por Havana foi detalhado e o guia super conhecedor da história local. Recomendo muito!"</p>
+                    <p class="testimonial-author">- Carla, Belo Horizonte</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="contact-container">
+            <h2 class="section-title">Entre em Contato</h2>
+            
+            <form class="contact-form">
+                <div class="form-group">
+                    <label for="name">Nome</label>
+                    <input type="text" id="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Telefone</label>
+                    <input type="tel" id="phone">
+                </div>
+                
+                <div class="form-group">
+                    <label for="package">Pacote de Interesse</label>
+                    <select id="package">
+                        <option value="">Selecione um pacote</option>
+                        <option value="havana-classica">Havana Clássica</option>
+                        <option value="praia-havana">Praia + Havana</option>
+                        <option value="personalizado">Personalizado</option>
+                    </select>
+                </div>
+                
+                <div class="form-group full">
+                    <label for="message">Mensagem</label>
+                    <textarea id="message"></textarea>
+                </div>
+                
+                <div class="form-group full">
+                    <button type="submit" class="btn">Enviar Solicitação</button>
+                </div>
+            </form>
+        </
